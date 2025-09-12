@@ -14,7 +14,7 @@ pub struct CompleteSession<'info> {
   pub doctor: Signer<'info>,
   #[account(mut)]
   pub patient: SystemAccount<'info>,
-  #[account()]
+  #[account(mut)]
   pub platform: SystemAccount<'info>,
   #[account(
     mut,
@@ -45,6 +45,13 @@ pub struct CompleteSession<'info> {
     associated_token::token_program = token_program,
   )]
   pub doctor_ata: Box<InterfaceAccount<'info, TokenAccount>>,
+  #[account(
+    mut,
+    associated_token::mint = mint,
+    associated_token::authority = platform,
+    associated_token::token_program = token_program,
+  )]
+  pub platform_ata: Box<InterfaceAccount<'info, TokenAccount>>,
 
   /// Programs
   pub associated_token_program: Program<'info, AssociatedToken>,
@@ -96,7 +103,7 @@ impl <'info> CompleteSession<'info> {
         self.token_program.to_account_info(),
         TransferChecked {
           from: self.vault.to_account_info(),
-          to: self.platform.to_account_info(),
+          to: self.platform_ata.to_account_info(),
           authority: self.escrow.to_account_info(),
           mint: self.mint.to_account_info(),
         },
