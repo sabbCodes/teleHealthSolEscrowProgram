@@ -5,7 +5,7 @@ mod errors;
 mod instructions;
 use instructions::*;
 
-declare_id!("2UyrkxG28g7hHcsy15d1mEUc7KcDZ3zcnvS8fHsrks1q");
+declare_id!("8Y3VY6D5PLVu7BASTyK6rERs3vRUwFKin4yGMabmC6GY");
 
 #[program]
 pub mod telehealthsol_escrow {

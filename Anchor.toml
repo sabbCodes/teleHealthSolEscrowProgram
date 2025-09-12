@@ -5,14 +5,14 @@ package_manager = "yarn"
 resolution = true
 skip-lint = false
 
-[programs.localnet]
-telehealthsol_escrow = "2UyrkxG28g7hHcsy15d1mEUc7KcDZ3zcnvS8fHsrks1q"
+[programs.devnet]
+telehealthsol_escrow = "8Y3VY6D5PLVu7BASTyK6rERs3vRUwFKin4yGMabmC6GY"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
